@@ -11,19 +11,7 @@ Another plugin use @babel/plugin-transform-flow-strip-types take a look (https:/
 - [Test unit](#testunit)
 
 ## Database
-Use tools sequelize to manage the database, take a look (https://sequelize.org/v5/). Make sure install sequelize-cli with:
-
-```bash
-$ npm install --save-dev sequelize-cli
-```
-
-Run boilerplate sequelize
-
-```bash
-$ yarn sequelize-mysql init
-```
-
-> **Note**: Directory reserved by sequelize boilerplate inside of src/ config migrations models and seeders. sequelize-mysql command inside package.json create already. 
+This database use mysql, take a look (https://github.com/mysqljs/mysql)
 
 ## API
 Registration API including data
@@ -39,7 +27,7 @@ Registration API including data
 ```
 
 The url api available on 
-(https://mitrais.heroku.com/api/v1/registration)
+(https://mitrais.heroku.com/auth/signup)
 
 ## Test unit
 To run test unit scenario
