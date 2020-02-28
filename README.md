@@ -27,7 +27,7 @@ Registration API including data
 ```
 
 The url api available on 
-(https://mitrais.heroku.com/auth/signup)
+(https://mitraist.herokuapp.com/auth/signup)
 
 ## Test unit
 To run test unit scenario
