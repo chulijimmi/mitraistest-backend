@@ -1,7 +1,7 @@
 import mysql from 'mysql';
 import DbConfig from '../config/DbConfig'
 
-var Pool = mysql.createPool({
+let Pool = mysql.createPool({
     connectionLimit : 10,
     host : DbConfig.mysql.dbHost,
     user : DbConfig.mysql.dbUser,

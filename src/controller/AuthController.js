@@ -1,12 +1,14 @@
 import express from 'express'
 import { signup } from '../models/UserModel'
+import HandleController from './HandleController'
 
 //Signup Controller
 const signupController = express.Router();
 
-signupController.post('/', async (req, res, next) => {
-    const result = await signup(req.body);
-    res.json(result);
+signupController.post('/', async (req, res) => {
+    HandleController(req, res, async (callback) => {
+        return signup(callback)
+    })
 })
 
 const authController = express.Router();

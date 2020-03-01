@@ -30,6 +30,9 @@ app.use('/', (req, res, next) => {
     }
 })
 app.use('/auth', AuthController)
+app.get('/test', (req, res, next) => {
+    res.json({error: 100, message: 'test'})
+})
 app.use('/api/v1', Authentication)
 app.use('/', (req, res, next) => {
     res.json({
