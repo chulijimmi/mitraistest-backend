@@ -1,3 +1,5 @@
+import MessagingError from './MessagingError.json'
+
 /**
  * Validation mobileNumber to check input from request.
  * will product false if first 5 digits not equal with
@@ -51,6 +53,7 @@ export const validateMobileNumber = (mobileNumber) => {
         const a = mobileCode[i].code.toString().substr(0, 5);
         const b = mobileNumber.substr(0, 5);
         if (a == b) isValid = true;
+        return isValid;
     }
 
     return isValid
@@ -58,32 +61,18 @@ export const validateMobileNumber = (mobileNumber) => {
 
 export const checkIsRequireRegister = (payload) => {
     if (payload.mobileNumber == '') {
-        return {
-            error: 201,
-            message: 'Mobile number is required'
-        }
+        return MessagingError.mobileNumber.isRequired;
     }
-
     else if (payload.firstName == '') {
-        return {
-            isValid: 202,
-            message: 'First name is required'
-        }
+        return MessagingError.firstName.isRequired;
     }
-
     else if (payload.lastName == '') {
-        return {
-            isValid: 203,
-            message: 'Last name is required'
-        }
+        return MessagingError.lastName.isRequired;
     }
-
     else if (payload.email == '') {
-        return {
-            error: 204,
-            message: 'Email is required and should valid email address'
-        }
+        return MessagingError.email.isRequired;
     }
-
-    else return { error: 0, message: 'Success'}
+    else {
+        return { error: 0, message: 'Success'};
+    }
 }

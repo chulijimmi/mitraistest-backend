@@ -1,7 +1,6 @@
 import Database from '../classes/Database'
 import BaseModel from './BaseModel'
 import { validateMobileNumber, checkIsRequireRegister } from '../validation/UserValidation'
-
 /**
  * Signup Process
  * @param {Object} body
