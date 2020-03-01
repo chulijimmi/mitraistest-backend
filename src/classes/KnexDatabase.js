@@ -67,7 +67,6 @@ class KnexDatabase {
      * @param {Object} data
      */
     insert(tableName, data) {
-        console.log('insert args', [...this.outputQry]);
         try {
             return this.connection().insert(data).returning([...this.outputQry]).into(tableName)
                 .then(function([id]){
@@ -76,6 +75,19 @@ class KnexDatabase {
                 .catch(function(error) {
                     return error;
                 })
+        } catch (error) {
+            return error;
+        }
+    }
+
+    /**
+     * By passing root class to knex it self
+     * tableName should be not empty
+     * @param {String} tableName
+     */
+    knex(tableName){
+        try {
+            return this.connection(tableName);
         } catch (error) {
             return error;
         }

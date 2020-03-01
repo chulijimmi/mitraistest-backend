@@ -10,11 +10,11 @@ class BaseModel extends KnexDatabase {
      * Query to get is mobile number exist
      * will produce output as an array
      * e.g [id: 1] and empty []
-     * @param {String} input 
+     * @param {String} mobileNumber 
      */
-    async getExistMobileNumber(input) {
+    async getExistMobileNumber(mobileNumber) {
         this.select(['mobileNumber'])
-        this.where({mobileNumber: input})
+        this.where({mobileNumber})
         return await this.get(this.table)
     }
 
@@ -22,11 +22,11 @@ class BaseModel extends KnexDatabase {
      * Query to get is mobile number exist
      * will produce output as an array
      * e.g [id: 1] and empty []
-     * @param {String} input 
+     * @param {String} email 
      */
-    async getExistEmailAddress(input) {
+    async getExistEmailAddress(email) {
         this.select(['email'])
-        this.where({email: input})
+        this.where({email})
         return await this.get(this.table)
     }
 
@@ -36,6 +36,26 @@ class BaseModel extends KnexDatabase {
      */
     async addUser(data) {
         return await this.insert(this.table, data);
+    }
+
+    /**
+     * Delete user
+     * @param {String} mobileNumber 
+     * @param {String} email 
+     */
+    async delUser(mobileNumber, email) {
+        try {
+            return await
+            this.knex(this.table).where('mobileNumber', mobileNumber).where('email', email).del()
+                .then( function(result) {
+                    return result;
+                })
+                .catch( function(error) {
+                    return error;
+                })
+        } catch (error) {
+            return error;
+        }    
     }
 }
 
