@@ -37,7 +37,6 @@ export const signup = async (body, table='users') => {
         }
 
         const response = await db.runQuery(query);
-        await db.close();
         data.id = response.insertId
         return { error: 0, success: true, data };
     } catch (error) {
