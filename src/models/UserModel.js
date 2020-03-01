@@ -1,17 +1,21 @@
 import Database from '../classes/Database'
 import BaseModel from './BaseModel'
-import { validateMobileNumber } from '../validation/UserValidation'
+import { validateMobileNumber, checkIsRequireRegister } from '../validation/UserValidation'
 
 /**
  * Signup Process
  * @param {Object} body
  * reserved error code response
- * 201 Mobile phone number is exist or not valid indonesian number
- * 202 Email address is exist
+ * 201 Mobile phone number is required,
+ * will check is exist and should valid indonesian number
+ * 202 First name is required
+ * 203 Last name is required
+ * 204 Email is require,
+ * will check email address is exist
  */
 
 export const signup = async (body) => {
-    const objUser = {
+    const payload = {
         mobileNumber: body.mobileNumber,
         firstName: body.firstName,
         lastName: body.lastName,
@@ -19,10 +23,13 @@ export const signup = async (body) => {
         gender: body.gender,
         email: body.email
     }
+
+    const isRequire = checkIsRequireRegister(payload)
+    if (isRequire.error !== 0) return isRequire;
     
     const db = new BaseModel('users');
 
-    const isValidMobileNumber = validateMobileNumber(objUser.mobileNumber);
+    const isValidMobileNumber = validateMobileNumber(payload.mobileNumber);
     if (!isValidMobileNumber)
         return { 
             error: 201, 
@@ -46,7 +53,7 @@ export const signup = async (body) => {
             message: `Your email ${body.email} is not available`
         }
     
-    const createUser = await db.addUser(objUser);
+    const createUser = await db.addUser(payload);
 
     return {
         error: 0,

@@ -55,3 +55,35 @@ export const validateMobileNumber = (mobileNumber) => {
 
     return isValid
 }
+
+export const checkIsRequireRegister = (payload) => {
+    if (payload.mobileNumber == '') {
+        return {
+            error: 201,
+            message: 'Mobile number is required'
+        }
+    }
+
+    else if (payload.firstName == '') {
+        return {
+            isValid: 202,
+            message: 'First name is required'
+        }
+    }
+
+    else if (payload.lastName == '') {
+        return {
+            isValid: 203,
+            message: 'Last name is required'
+        }
+    }
+
+    else if (payload.email == '') {
+        return {
+            error: 204,
+            message: 'Email is required and should valid email address'
+        }
+    }
+
+    else return { error: 0, message: 'Success'}
+}

@@ -18,9 +18,7 @@ let port = ServerConfig.port
  */
 app.use(helmet())
 app.use(bodyParser.json())
-if(process.env.NODE_ENV === 'development') {
-    app.use(cors())
-}
+app.use(cors())
 app.use(favicon('favicon.png'));
 app.use('/', (req, res, next) => {
     try {
