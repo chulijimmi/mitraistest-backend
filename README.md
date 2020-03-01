@@ -11,7 +11,7 @@ Another plugin use @babel/plugin-transform-flow-strip-types take a look (https:/
 - [Test unit](#testunit)
 
 ## Database
-This database use mysql, take a look (https://github.com/mysqljs/mysql)
+This database use mysql, and managing by knex library take a look (https://github.com/mysqljs/mysql) and knex (http://knexjs.org/)
 
 ## API
 Registration API including data

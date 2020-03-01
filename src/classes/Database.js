@@ -12,7 +12,7 @@ class Database {
     runQuery(sql) {
         return new Promise( (resolve, reject) => {
             this.connection.query( sql, (error, results) => {
-                if(error) return reject (error);
+                if (error) return reject (error);
                 resolve(results)
             })
         })
@@ -21,7 +21,7 @@ class Database {
     close() {
         return new Promise((resolve, reject) => {
             this.connection.end( error => {
-                if(error) return reject (error);
+                if (error) return reject (error);
                 resolve()
             });
         });
