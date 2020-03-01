@@ -1,4 +1,4 @@
-import MessagingError from './MessagingError.json'
+import MessagingError from '../validation/MessagingError'
 
 /**
  * Validation mobileNumber to check input from request.
