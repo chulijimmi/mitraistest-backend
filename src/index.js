@@ -6,12 +6,7 @@ import helmet from 'helmet';
 import ServerConfig from './config/ServerConfig';
 import Authentication from './middleware/Authentication';
 import AuthController from './controller/AuthController';
-import CorsServer from './config/CorsServer';
 
-var corsOptions = {
-    origin: ['https://catnuxer.github.io', 'http://localhost', 'http://127.0.0.1'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 /**
  * Node Listen Ip Address & Port
  */
@@ -23,7 +18,9 @@ let port = ServerConfig.port
  */
 app.use(helmet())
 app.use(bodyParser.json())
-app.use(cors())
+if(process.env.NODE_ENV === 'development') {
+    app.use(cors())
+}
 app.use(favicon('favicon.png'));
 app.use('/', (req, res, next) => {
     try {
