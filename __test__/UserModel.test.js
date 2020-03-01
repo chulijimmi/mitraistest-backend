@@ -32,46 +32,46 @@ test(`Success registration should be positive number of id`, async () => {
     expect(model.data > 0).toBeTruthy();
 })
 
-// //Success show error if unique parameters exist
-// test(`Success test case show error if unique mobile number exist`, async () => {
-//     const db = new BaseModel('users')
-//     const model = await db.getExistMobileNumber(users.mobileNumber);
-//     expect(model.length).toBeGreaterThanOrEqual(1)
-// })
+//Success show error if unique parameters exist
+test(`Success test case show error if unique mobile number exist`, async () => {
+    const db = new BaseModel('users')
+    const model = await db.getExistMobileNumber(users.mobileNumber);
+    expect(model.length).toBeGreaterThanOrEqual(1)
+})
 
-// test(`Success test case show error if unique email address exist`, async () => {
-//     const db = new BaseModel('users')
-//     const model = await db.getExistEmailAddress(users.email);
-//     expect(model.length).toBeGreaterThanOrEqual(1)
-// })
+test(`Success test case show error if unique email address exist`, async () => {
+    const db = new BaseModel('users')
+    const model = await db.getExistEmailAddress(users.email);
+    expect(model.length).toBeGreaterThanOrEqual(1)
+})
 
-// //Remove users after test case running
-// test(`Delete users data after test success registration`, async () => {
-//     const db = new BaseModel('users')
-//     const model = await db.delUser(users.mobileNumber, users.email);
-//     expect(model).toBeTruthy();
-// })
+//Remove users after test case running
+test(`Delete users data after test success registration`, async () => {
+    const db = new BaseModel('users')
+    const model = await db.delUser(users.mobileNumber, users.email);
+    expect(model).toBeTruthy();
+})
 
-// //Validate success and failed indonesian mobile number
-// test(`Failed test case valid indonesian mobile number`, () => {
-//     const result = validateMobileNumber('6182917793');
-//     expect(result === false).toBeTruthy();
-// })
+//Validate success and failed indonesian mobile number
+test(`Failed test case valid indonesian mobile number`, () => {
+    const result = validateMobileNumber('6182917793');
+    expect(result === false).toBeTruthy();
+})
 
-// test(`Sucess test case validate indonesian mobile number`, () => {
-//     const result = validateMobileNumber(users.mobileNumber);
-//     expect(result).toBeTruthy();
-// })
+test(`Sucess test case validate indonesian mobile number`, () => {
+    const result = validateMobileNumber(users.mobileNumber);
+    expect(result).toBeTruthy();
+})
 
-// //Success registration if unique parameters doesn't exist
-// test(`Registration approve for unique mobile number`, async () => {
-//     const db = new BaseModel('users')
-//     const model = await db.getExistMobileNumber(users.mobileNumber);
-//     expect(model.length == 0).toBeTruthy();
-// })
+//Success registration if unique parameters doesn't exist
+test(`Registration approve for unique mobile number`, async () => {
+    const db = new BaseModel('users')
+    const model = await db.getExistMobileNumber(users.mobileNumber);
+    expect(model.length == 0).toBeTruthy();
+})
 
-// test(`Registration approve for unique email address`, async () => {
-//     const db = new BaseModel('users')
-//     const model = await db.getExistEmailAddress(users.email);
-//     expect(model.length == 0).toBeTruthy();
-// })
+test(`Registration approve for unique email address`, async () => {
+    const db = new BaseModel('users')
+    const model = await db.getExistEmailAddress(users.email);
+    expect(model.length == 0).toBeTruthy();
+})

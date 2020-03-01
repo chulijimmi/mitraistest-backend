@@ -53,12 +53,15 @@ export const validateMobileNumber = (mobileNumber) => {
         const a = mobileCode[i].code.toString().substr(0, 5);
         const b = mobileNumber.substr(0, 5);
         if (a == b) isValid = true;
-        return isValid;
     }
 
     return isValid
 }
 
+/**
+ * Check is require condition validation
+ * @param {Object} payload 
+ */
 export const checkIsRequireRegister = (payload) => {
     if (payload.mobileNumber == '') {
         return MessagingError.mobileNumber.isRequired;

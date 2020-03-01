@@ -1,6 +1,7 @@
 import Database from '../classes/Database'
 import BaseModel from './BaseModel'
 import { validateMobileNumber, checkIsRequireRegister } from '../validation/UserValidation'
+import MessagingError from '../validation/MessagingError.json'
 /**
  * Signup Process
  * @param {Object} body
@@ -29,28 +30,13 @@ export const signup = async (body) => {
     const db = new BaseModel('users');
 
     const isValidMobileNumber = validateMobileNumber(payload.mobileNumber);
-    if (!isValidMobileNumber)
-        return { 
-            error: 201, 
-            success: false, 
-            message: `Please enter valid indonesian mobile number`
-        };
+    if (!isValidMobileNumber) MessagingError.mobileNumber.isNotValid;
 
     const isMobileNumberExist = await db.getExistMobileNumber(body.mobileNumber);
-    if (isMobileNumberExist.length > 0)
-        return { 
-            error: 201, 
-            success: false, 
-            message: `${body.mobileNumber} is exist, plase use another`
-        };
+    if (isMobileNumberExist.length > 0) MessagingError.mobileNumber.isExist;
     
     const isEmailExist = await db.getExistEmailAddress(body.email);
-    if (isEmailExist.length > 0)
-        return {
-            error: 202,
-            success: false,
-            message: `Your email ${body.email} is not available`
-        }
+    if (isEmailExist.length > 0) MessagingError.email.isExist;
     
     const createUser = await db.addUser(payload);
 
