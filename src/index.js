@@ -16,7 +16,20 @@ let port = ServerConfig.port
 /**
  * Logic of express middleware
  */
-app.use(helmet())
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            styleSrc: ["'self'"],
+            scriptSrc: ["'self'"],
+            reportUri: '/report-violation',
+            objectSrc: ["'self'"],
+            upgradeInsecureRequests: true
+        },
+    },
+    referrerPolicy: { policy: 'same-origin'},
+    featurePolicy: {}
+}));
 app.use(bodyParser.json())
 app.use(cors())
 app.use(favicon('favicon.png'));
