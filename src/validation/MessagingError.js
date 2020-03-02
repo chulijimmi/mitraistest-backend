@@ -37,7 +37,7 @@ module.exports = {
             "message": "Email is required and should valid email address"
         },
         "isExist": {
-            "error": 202,
+            "error": 204,
             "success": false,
             "message": "Your email is not available, plase use other"
         }
