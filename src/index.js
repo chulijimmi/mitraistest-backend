@@ -16,7 +16,8 @@ let allowedOrigins = [
     'https://mitraist.herokuapp.com', 
     'http://localhost:3000/mitraistestfrontend',
     'http://localhost:3000',
-    'https://catnuxer.github.io/mitraistestfrontend/'
+    'https://catnuxer.github.io/mitraistestfrontend/',
+    'https://catnuxer.github.io'
 ];
 /**
  * Logic of express middleware
