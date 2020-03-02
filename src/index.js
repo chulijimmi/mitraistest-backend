@@ -12,7 +12,12 @@ import AuthController from './controller/AuthController';
  */
 let app = express()
 let port = ServerConfig.port
-
+let allowedOrigins = [
+    'https://mitraist.herokuapp.com', 
+    'http://localhost:3000/mitraistestfrontend',
+    'http://localhost:3000',
+    'https://catnuxer.github.io/mitraistestfrontend/'
+];
 /**
  * Logic of express middleware
  */
@@ -27,11 +32,20 @@ app.use(helmet({
             upgradeInsecureRequests: true
         },
     },
-    referrerPolicy: { policy: 'same-origin'},
-    featurePolicy: {}
+    referrerPolicy: { policy: 'same-origin'}
 }));
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors({
+    origin: function(origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            var message = 'You have problem with CORS policy';
+            return callback(new Error(message), false);
+        }
+
+        return callback(null, true);
+    }
+}))
 app.use(favicon('favicon.png'));
 app.use('/', (req, res, next) => {
     try {
