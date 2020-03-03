@@ -45,11 +45,9 @@ export const validateMobileNumber = (mobileNumber) => {
         { code: 62823, company: 'telkomsel'}
     ];
 
+    let isValid = false;
     if (mobileNumber.length > 5) {
         if (mobileNumber.substr(0, 2) !== '62') return false;
-
-        let isValid = false;
-
         for (let i = 0; i < mobileCode.length; i++) {
             const a = mobileCode[i].code.toString().substr(0, 5);
             const b = mobileNumber.substr(0, 5);
