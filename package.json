@@ -33,7 +33,7 @@
     "helmet": "^3.21.3",
     "jest": "^25.1.0",
     "knex": "^0.20.10",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "regenerator-runtime": "^0.13.3"
